@@ -99,14 +99,17 @@ function renderLayer(lsid){
 }
 </script>
 <div id="sdmcontainer" class="sdmcont">
-<h2 id="FindPrompt">Find out where your species lives...</h2>
-<div id="speciessearch" class="background">
-<div class="search-container">
-<div id="species" class="bccvl-search-form"><input id="specsearch" name="species_query" type="text" placeholder="Enter species name..." />
-<input name="species_source" type="hidden" value="ala" /></div>
+    <div id="speciessearch" class="background">
+        <h2 id="FindPrompt">Species distribution experiments, as fast as you can type.</h2>
+        <div class="search-container">
+            <div id="species" class="bccvl-search-form">
+                <input id="specsearch" name="species_query" type="text" placeholder="Enter species name..." />
+                <input name="species_source" type="hidden" value="ala" />
+            </div>
+        </div>
+        <div class="table-container">
+            <div id="species_results" class="bccvl-searchform-results"></div>
+        </div>
+        <h5 id="LoginPrompt">Want to refine or project an experiment into the future? <a href="https://app.bccvl.org.au/login">Login now</a>.</h5>
+    </div>
 </div>
-<!--- Results section --->
-<div id="species_results" class="bccvl-searchform-results"></div>
-</div>
-</div>
-<h2 id="LoginPrompt">Want to refine or project this experiment into the future? <a href="https://app.bccvl.org.au/login">Login</a> now.</h2>
