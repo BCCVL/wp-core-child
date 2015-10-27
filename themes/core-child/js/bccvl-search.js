@@ -288,7 +288,7 @@ var search =    function( $      ) {
 
                     $inputField.typeahead({
 
-                        items: 12,
+                        items: 6,
 
                         source: function(queryStr, process) {
                             if (timeout) {
@@ -445,7 +445,7 @@ var search =    function( $      ) {
                         switch (action) {
                             // - - - - - - - - - - - - - - - - - - - - - - - -
                             case 'alaimport': // import from ala
-                                var html = '<a href="' + actionParam + '" class="fine import-dataset-btn btn-mini btn-primary" id="runsdm" data-friendlyname="'+ item.friendlyname + '" data-lsid="' + item.lsid + '" target="_blank">';
+                                var html = '<a href="' + actionParam + '" class="fine import-dataset-btn btn-primary" id="runsdm" data-friendlyname="'+ item.friendlyname + '" data-lsid="' + item.lsid + '" target="_blank">';
                                 html += '<i class="fa fa-play icon-link" data-friendlyname="icon_alaimport_' + item.friendlyname + '"></i> Run SDM</a>';
                                 $(html).appendTo($actions);
                                 break;

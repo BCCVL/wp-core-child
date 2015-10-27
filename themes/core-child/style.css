@@ -11,14 +11,13 @@
 /* =Theme customization starts here
 ------------------------------------------------------- */
 
-
 /* Setup the background image 
 ------------------------------------------------ */
 #demoSDM {
 /*	background : url('images/Australia_satellite_orthographic.jpg') no-repeat center #0B0A32;
 	float      : inherit;*/
 	width      : 100%;
-	height     : 680px;
+	height     : 540px;
 	margin-left: auto;
    	margin-right: auto;
     border-bottom: 12px solid #3baa35;
@@ -26,11 +25,12 @@
 
 #sdmcontainer {
   width: 50%;
+  margin-top:4em;
 }
 
 #map {
   width: 100%;
-  height: 680px;
+  height: 540px;
   position: absolute;
 }
 
@@ -41,8 +41,6 @@
 # OL3.70
 ------------------------------------------------ */
 #species{
-   	display: table-cell;
-    vertical-align: middle;
     border:0 solid #f5f5f5;
     font-size:18px;
     color:black;
@@ -53,34 +51,42 @@
 #species_results{
     margin-top: 0;
     margin-bottom: 0;
+    max-height:300px;
+    overflow-y:scroll;
+    position: absolute;
+    box-shadow: 4px 4px 0px rgba(0,0,0,.1);
+    border-top: 1px solid rgba(0,0,0,.03);
+    z-index:1000;
+    width:100%;
 }
 
+
 #speciessearch{
-    background: rgba(255, 255, 255, 0.35);
-    height: 400px;
-    margin-left: 20%;
-    margin-right: 20%;
+    background: rgba(0, 159, 227, .75);
     position: relative;
-    overflow:auto;
-    width: 60%;
+    max-width: 480px;
+    margin-top:1em;
+    min-height: 200px;
+    padding:25px;
 }
 
 
 /* Search input box
 ------------------------------------------------ */
-input[id=specsearch] {
-    text-align:center;
-    display: block;
-    margin-left: 10%;
-    margin-right: 10%;
-    width: 80%; 
+input#specsearch {
+    text-indent: 25px;
     border: 0 solid #818181;
     background-image: url(images/icons/search-icon.png);
     background-position: 7px center;
     background-repeat: no-repeat;
     position: relative;
+    box-shadow: inset 1px 2px 1px rgba(0,0,0,.1);
+    border-radius: 0px;
 }
-
+input#specsearch:focus {
+  border:none!important;
+  outline:none;
+}
 /* Generic headers etc 
 ------------------------------------------------ */
 @media all {
@@ -92,22 +98,18 @@ h1 {
 
 #LoginPrompt {
     color: #FFFFFF;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    text-shadow: 2px 2px 2px rgba(0,0,0,0.3);
-    text-align: right;
-    z-index: 8888;
     position: relative;
+    font-weight:600;
+    margin-top:1.2em;
+}
+#LoginPrompt a {
+  color:#f9b233;
 }
 
 #FindPrompt {
     color: #FFFFFF;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    text-shadow: 2px 2px 2px rgba(0,0,0,0.3);
-    text-align: left;
-    z-index: 8889;
     position: relative;
+    margin:1em 0 .75em;
 }
 
 h5 {
@@ -116,27 +118,34 @@ h5 {
 }
 }
 
-.view-dataset-external {
+/*.view-dataset-external {
     background-image: linear-gradient(to bottom, #3BAA35, #e6e6e6) !important;
-}
+}*/
 
 .import-dataset-btn {
-    background-image: linear-gradient(to bottom, #ffffff, #e6e6e6) !important;
+    background: #009FE3;
+    border-radius: 4px;
+    padding: 5px 8px;
+    text-decoration: none;
+    text-shadow: none;
+}
+.import-dataset-btn i {
+  font-size:0.9em;
+  margin-right:.3em;
+}
+.import-dataset-btn:hover {
+    background: #0089c3;
 }
 
 /* ALA Search results
 ------------------------------------------------ */
 #alaresultsinf{
-    border-left: None;
-    border-bottom: None;
     width:70%;
 /*     background: rgba(255, 255, 255, 0.35); */
 
 }
 
 #alaresultsact{
-    border-right: None;
-    border-bottom: None;
     width:30%;
 /*     background: rgba(255, 255, 255, 0.35); */
 }
@@ -150,9 +159,7 @@ h5 {
 /* inline search sections ------------------------------------------------ */
 
 .search-container{
-  display: table;
   width:100%;
-  height: 100%;
 }
 
 .bccvl-searchform-results {
@@ -166,7 +173,7 @@ h5 {
 
 .bccvl-searchform-results table.table {
     margin-bottom: 0;
-    background-color: rgba(255,255,255, 0.35);
+    background-color: rgba(255,255,255, 1);
 }
 
 .bccvl-searchform-results .bccvl-thumb {
@@ -184,57 +191,41 @@ h5 {
 }
 
 .typeahead {
-background-clip: padding-box;
-background-color: rgb(255, 255, 255);
-border-bottom-color: rgba(0, 0, 0, 0.2);
-border-bottom-left-radius: 4px;
-border-bottom-right-radius: 4px;
-border-bottom-style: solid;
-border-bottom-width: 1px;
-border-image-outset: 0;
-border-image-repeat: stretch;
-border-image-slice: 100%;
-border-image-source: none;
-border-image-width: 1;
-border-left-color: rgba(0, 0, 0, 0.2);
-border-left-style: solid;
-border-left-width: 1px;
-border-right-color: rgba(0, 0, 0, 0.2);
-border-right-style: solid;
-border-right-width: 1px;
-border-top-color: rgba(0, 0, 0, 0.2);
-border-top-left-radius: 4px;
-border-top-right-radius: 4px;
-border-top-style: solid;
-border-top-width: 1px;
-box-shadow: rgba(0, 0, 0, 0.2) 0 5px 10px 0;
-color: rgb(51, 51, 51);
-display: block;
-float: none;
-font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-font-size: 14px;
-line-height: 20px;
-list-style-image: none;
-list-style-position: outside;
-list-style-type: none;
-margin-bottom: 0;
-margin-left: 10%;
-margin-right: 10%;
-margin-top: 2px;
-min-width: 100px;
-padding-bottom: 5px;
-padding-left: 0;
-padding-right: 0;
-padding-top: 5px;
-position: relative;
-top: 0 !important; 
-width: 80%;
-z-index: 1051 !important;
+    border: none;
+    margin-top: 0;
+    border-top: 1px solid rgba(0,0,0,.03);
+    border-radius: 0px;
+    box-shadow: 4px 4px 0px rgba(0,0,0,.1);
+    background-color: rgba(255,255,255,1);
+  color: rgb(51, 51, 51);
+  display: block;
+  float: none;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  list-style-image: none;
+  list-style-position: outside;
+  list-style-type: none;
+  margin-bottom: 0;
+  margin-top: 2px;
+  min-width: 100px;
+  padding-bottom: 5px;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 5px;
+  position: relative;
+  left:0!important;
+  margin:1px 25px;
+  position:absolute;
+  z-index:1001;
+}
+.typeahead a {
+  text-decoration: none;
 }
 
 .dropdown-menu > li > a {
   display: block;
-  padding: 3px 20px;
+  padding: 8px 20px;
   clear: both;
   font-weight: normal;
   line-height: 20px;
@@ -273,4 +264,19 @@ z-index: 1051 !important;
   background-color: transparent;
   background-image: none;
   filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+
+.bccvl-search-results {
+  margin-top:0;
+}
+.table.bccvl-search-results td {
+  border-left:0px;
+  border-right:0px;
+}
+.table-container {
+  width:100%;
+  position:relative;
+}
+.bccvl-table-label h5 {
+  margin:0;
 }

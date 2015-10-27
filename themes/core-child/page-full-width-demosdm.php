@@ -9,7 +9,7 @@ Template Name: Full Width Page DemoSDM
 <script> var ajaxurl = '<?php echo admin_url('admin-ajax.php'); ?>'; </script>
 
 <!-- Canned experiment -->
-<div id="demoSDM" class="full_width_page"">
+<div id="demoSDM" class="full_width_page">
 	<div id="map"></div>
 	<div class="container_24">
 		<div id="copya" class="grid_24">
