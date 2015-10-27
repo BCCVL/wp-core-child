@@ -29,9 +29,8 @@ function swift_fetch(){
 
 function submit_demo_sdm(){
     $login = 'demosdm';
-    $password = 'icekingrules';
     $lsid = rawurldecode($_POST['lsid']);
-    $url = 'https://192.168.100.200/_debug/bccvl/experiments/@@demosdm?lsid='.$lsid;
+    $url = 'https://demo.bccvl.org.au/experiments/@@demosdm?lsid='.$lsid;
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

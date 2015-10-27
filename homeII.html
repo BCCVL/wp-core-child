@@ -1,103 +1,4 @@
 <body onload="init();">
-<script defer="defer" type="text/javascript">
-var map, osmLayer, projLayer;
-var lastSubmittedLSID = null;
-function init(){
-    jQuery("#demoSDM").on("click", ".import-dataset-btn", sdmbtnClickHandler);
-    // 
-    map = new ol.Map({
-        layers: [
-            new ol.layer.Tile({
-                source: new ol.source.OSM()
-            })
-        ],
-        controls: ol.control.defaults({
-            attributionOptions: /** @type {olx.control.AttributionOptions} */ ({
-                collapsible: true
-            })
-        }),
-        target: 'map',
-        projection: 'EPSG:3857',
-        view: new ol.View({
-            center: ol.proj.transform([132.13333, -23.116667], 'EPSG:4326', 'EPSG:3857'),
-            zoom: 4
-        })
-    });
-}
-function sdmbtnClickHandler(event){
-    var btn = jQuery(event.currentTarget);
-    event.preventDefault();
-    checkNectar(btn.attr("data-lsid"));
-}
-function checkNectar(lsid){
-    var ret = jQuery.get(ajaxurl, {action: 'swift_fetch', lsid: lsid});
-    ret.fail(function() {
-        console.log("JSON not found");
-        waitForComplete(lsid, null);
-    });
-    ret.done(function(data) {
-        console.log("JSON is there");
-        console.log(data);
-        waitForComplete(lsid, data);
-    });
-}
-function waitForComplete(lsid, data){
-    if(data){
-        if(data.status == "FAILED"){
-            // If the experiment has failed, re-run it incase the datamover failed
-            submitDemoSDM(lsid);
-            // TODO: Need to catch a runaway loop here!
-        }
-        else if(data.status == "COMPLETE"){
-            renderLayer(lsid);
-        }
-        else{
-            setTimeout(function(){
-                    checkNectar(lsid);
-                }, 5000);
-        }
-    }
-    else{
-        // Assuming experiment hasn't been run in the past
-        if (lastSubmittedLSID == lsid){
-             console.log('Already submitted, waiting...');
-             setTimeout(function(){
-                    checkNectar(lsid);
-                }, 15000);
-        }
-        else{
-             submitDemoSDM(lsid);
-        }
-    }
-}
-function submitDemoSDM(lsid){
-    // Do an AJAX call to submit the experiment
-    var submitRet = jQuery.post(ajaxurl, {action: 'submit_demo_sdm', lsid: lsid});
-    submitRet.fail(function(a,b,c) {
-        console.log('Job submission failed!');
-                console.log(a,b,c);
-    });
-    submitRet.done(function(data) {
-        console.log('Job submitted!');
-                console.log(data);
-        lastSubmittedLSID = lsid;
-        setTimeout(function(){
-                    checkNectar(lsid);
-                }, 10000);
-    });
-}
-function renderLayer(lsid){
-    var layers = new ol.layer.Image({
-            source: new ol.source.ImageStatic({
-                url: "https://swift.rc.nectar.org.au:8888/v1/AUTH_0bc40c2c2ff94a0b9404e6f960ae5677/demosdm/" + lsid + "/projection.png",
-                //imageSize: [800, 800],
-                projection: 'EPSG:3857',
-                imageExtent: ol.proj.transformExtent([111.975,-44.575, 156.275,-9.975], 'EPSG:4326', 'EPSG:3857')
-            })
-        });
-    map.addLayer(layers);
-}
-</script>
 <div id="sdmcontainer" class="sdmcont">
     <div id="speciessearch" class="background">
         <h2 id="FindPrompt">Species distribution experiments, as fast as you can type.</h2>
@@ -110,6 +11,6 @@ function renderLayer(lsid){
         <div class="table-container">
             <div id="species_results" class="bccvl-searchform-results"></div>
         </div>
-        <h5 id="LoginPrompt">Want to refine or project an experiment into the future? <a href="https://app.bccvl.org.au/login">Login now</a>.</h5>
+        <h5 id="LoginPrompt">For more information on this experiment, <a href='freshdesk'>click here</a>. Want to refine or project an experiment into the future? <a href="https://app.bccvl.org.au/login">Log in now</a>.</h5>
     </div>
 </div>
