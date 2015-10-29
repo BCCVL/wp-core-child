@@ -24,6 +24,9 @@ function init(){
         projection: 'EPSG:3857'
     });
 }
+function setCompositeMode(evt){
+    evt.context.globalCompositeOperation = 'darken';
+}
 function renderLayer(lsid){
     if (SDMlayer) {
         map.removeLayer(SDMlayer)
@@ -35,6 +38,12 @@ function renderLayer(lsid){
                 imageExtent: ol.proj.transformExtent([111.975,-44.575, 156.275,-9.975], 'EPSG:4326', 'EPSG:3857')
             })
         });
+
+    SDMlayer.on('precompose', setCompositeMode);
+    SDMlayer.on('postcompose', function(){
+        SDMlayer.un('precompose', setCompositeMode);
+    });
+
     map.addLayer(SDMlayer);
 }
 function sdmbtnClickHandler(event){
