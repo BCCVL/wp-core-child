@@ -1,4 +1,4 @@
-var map, osmLayer, projLayer;
+var map, SDMlayer;
 var lastSubmittedLSID = null;
 function init(){
     jQuery("#demoSDM").on("click", ".import-dataset-btn", sdmbtnClickHandler);
@@ -24,7 +24,21 @@ function init(){
         projection: 'EPSG:3857'
     });
 }
+function renderLayer(lsid){
+    if (SDMlayer) {
+        map.removeLayer(SDMlayer)
+    }   
+    SDMlayer = new ol.layer.Image({
+            source: new ol.source.ImageStatic({
+                url: "https://swift.rc.nectar.org.au:8888/v1/AUTH_0bc40c2c2ff94a0b9404e6f960ae5677/demosdm/" + lsid + "/projection.png",
+                projection: 'EPSG:3857',
+                imageExtent: ol.proj.transformExtent([111.975,-44.575, 156.275,-9.975], 'EPSG:4326', 'EPSG:3857')
+            })
+        });
+    map.addLayer(SDMlayer);
+}
 function sdmbtnClickHandler(event){
+    jQuery("#species_results").hide();
     var btn = jQuery(event.currentTarget);
     event.preventDefault();
     checkNectar(btn.attr("data-lsid"));
@@ -85,14 +99,4 @@ function submitDemoSDM(lsid){
                     checkNectar(lsid);
                 }, 10000);
     });
-}
-function renderLayer(lsid){
-    var layers = new ol.layer.Image({
-            source: new ol.source.ImageStatic({
-                url: "https://swift.rc.nectar.org.au:8888/v1/AUTH_0bc40c2c2ff94a0b9404e6f960ae5677/demosdm/" + lsid + "/projection.png",
-                projection: 'EPSG:3857',
-                imageExtent: ol.proj.transformExtent([111.975,-44.575, 156.275,-9.975], 'EPSG:4326', 'EPSG:3857')
-            })
-        });
-    map.addLayer(layers);
 }

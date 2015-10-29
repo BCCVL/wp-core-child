@@ -71,6 +71,16 @@
 }
 
 
+#modelinfo{
+    background: rgba(0, 159, 227, .75);
+    position: relative;
+    max-width: 480px;
+    margin-top:1em;
+    min-height: 100px;
+    padding:25px;
+}
+
+
 /* Search input box
 ------------------------------------------------ */
 input#specsearch {
@@ -107,6 +117,12 @@ h1 {
 }
 
 #FindPrompt {
+    color: #FFFFFF;
+    position: relative;
+    margin:1em 0 .75em;
+}
+
+#DetailPrompt {
     color: #FFFFFF;
     position: relative;
     margin:1em 0 .75em;
