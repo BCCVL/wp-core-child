@@ -25,7 +25,7 @@ function init(){
     });
 }
 function setCompositeMode(evt){
-    evt.context.globalCompositeOperation = 'darken';
+    evt.context.globalCompositeOperation = 'lighten';
 }
 function renderLayer(lsid){
     if (SDMlayer) {

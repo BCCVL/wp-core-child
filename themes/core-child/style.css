@@ -1,7 +1,7 @@
 /*
  Theme Name:     core Child Theme
- Description:    This theme extends the BCCVL Core to allow the new front page
- Author:         Kerri Wait
+ Description:    Extends the BCCVL Core theme with demoSDM Experiment
+ Author:         Kerri Wait and Sam Wolski
  Template:       core
  Version:        1.0.0
 */
@@ -11,27 +11,34 @@
 /* =Theme customization starts here
 ------------------------------------------------------- */
 
-/* Setup the background image 
------------------------------------------------- */
 #demoSDM {
-/*	background : url('images/Australia_satellite_orthographic.jpg') no-repeat center #0B0A32;
-	float      : inherit;*/
 	width      : 100%;
 	height     : 540px;
 	margin-left: auto;
-   	margin-right: auto;
-    border-bottom: 12px solid #3baa35;
+  margin-right: auto;
+  border-bottom: 12px solid #3baa35;
 }
 
 #sdmcontainer {
   width: 50%;
-  margin-top:4em;
+  margin-top:3em;
+  position: absolute;
 }
 
 #map {
   width: 100%;
   height: 540px;
   position: absolute;
+}
+
+#progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: rgba(0, 60, 136, 0.4);
+  width: 0;
+  transition: width 250ms;
 }
 
 .olMapViewport {
@@ -60,27 +67,24 @@
     width:100%;
 }
 
-
 #speciessearch{
-    background: rgba(0, 159, 227, .75);
-    position: relative;
-    max-width: 480px;
-    margin-top:1em;
-    min-height: 200px;
-    padding:25px;
+  background: rgba(0, 159, 227, .75);
+  position: relative;
+  max-width: 480px;
+  min-height: 200px;
+  padding:25px;
 }
-
 
 #modelinfo{
-    background: rgba(0, 159, 227, .75);
-    position: relative;
-    max-width: 480px;
-    margin-top:1em;
-    min-height: 100px;
-    padding:25px;
+  position: relative;
+  max-width: 480px;
+  min-height: 200px;
+  padding:25px;
 }
 
-
+#modeldetail{
+  color: white;
+}
 /* Search input box
 ------------------------------------------------ */
 input#specsearch {
@@ -133,10 +137,6 @@ h5 {
     margin-top: 10px;
 }
 }
-
-/*.view-dataset-external {
-    background-image: linear-gradient(to bottom, #3BAA35, #e6e6e6) !important;
-}*/
 
 .import-dataset-btn {
     background: #009FE3;
