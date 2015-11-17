@@ -1,7 +1,7 @@
-<body onload="init();">
+<!--Keep me here to combat text-visual editor switching-->
 <div id="sdmcontainer" class="sdmcont">
     <div id="speciessearch" class="background">
-        <h2 id="FindPrompt">Species distribution experiments, as fast as you can type.</h2>
+        <h2 id="FindPrompt">Species distribution experiments, at your fingertips.</h2>
         <div class="search-container">
             <div id="species" class="bccvl-search-form">
                 <input id="specsearch" name="species_query" type="text" placeholder="Enter species name..." />
@@ -9,8 +9,15 @@
             </div>
         </div>
         <div class="table-container">
-            <div id="species_results" class="bccvl-searchform-results"></div>
+            <div id="species_results" class="bccvl-searchform-results">
+            </div>
         </div>
-        <h5 id="LoginPrompt">For more information on this experiment, <a href='freshdesk'>click here</a>. Want to refine or project an experiment into the future? <a href="https://app.bccvl.org.au/login">Log in now</a>.</h5>
-    </div>
-</div>
+        <h5 id="LoginPrompt">Want to refine or project an experiment into the future? <a href="https://app.bccvl.org.au/login">Log in now</a>.</h5>
+        </div>
+            <div id="modelinfo" class="background">
+                <p id="modeldetail"><b>Model:</b> Maxent
+                <b>Climate Dataset:</b> Current Climate (5km resolution)
+                <b>Climate Layers:</b> Annual Mean Temperature, Temperature Seasonality, Maximum Temperature of Warmest Month, Minimum Temperature of Warmest Month, Annual Precipitation, Precipitation Seasonality, Precipitation of Wettest Quarter, Precipitation of Driest Quarter.
+                <b>Run time:</b> 1 second - 5 minutes</p>
+            </div>
+        </div>
