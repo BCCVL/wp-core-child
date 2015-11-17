@@ -299,3 +299,51 @@ h5 {
 .bccvl-table-label h5 {
   margin:0;
 }
+.ol-zoom {
+    right: .5em;
+    left: auto!important;
+}
+.ol-control, .ol-control:hover {
+    background: transparent!important;
+}
+.ol-control button {
+    background: rgba(0, 159, 227, .75)!important;
+    border: none!important;
+    text-shadow: none!important;
+    color: white!important;
+    box-shadow: none!important;
+}
+.ol-control button:hover {
+    background: rgba(0, 159, 227, 1)!important;
+}
+@media screen and (max-width: 760px) {
+    #sdmcontainer {
+      width:auto;
+    }
+    #map, #demoSDM {
+      height:450px;
+    }
+    #speciessearch {
+      width:auto;
+      min-height: 0px;
+      padding:20px;
+    }
+    #FindPrompt {
+      font-size: 1.4em;
+    }
+    #specsearch{
+      font-size: 0.8em;
+      padding: 8px 10px;
+    }
+    #LoginPrompt {
+      font-size:1em;
+    }
+    #modelinfo {
+      padding: 0px;
+      position: absolute;
+      bottom: -320px;
+      font-size: 0.9em;
+      line-height: 1.2em;
+    }
+
+}

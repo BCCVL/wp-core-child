@@ -1,8 +1,18 @@
 jQuery(init);
 var map, SDMlayer;
 var lastSubmittedLSID = null;
+
 function init(){
     jQuery("#demoSDM").on("click", ".import-dataset-btn", sdm_button_click_handler);
+
+    var center = []
+
+    if ( jQuery(window).innerWidth() < 760 ){
+        center = [134, -25];
+    } else {
+        center = [112, -29];
+    }
+    console.log(center);
     // Define the base map
     map = new ol.Map({
         layers: [
@@ -17,7 +27,7 @@ function init(){
         }),
         target: 'map',
         view: new ol.View({
-            center: ol.proj.transform([112, -29], 'EPSG:4326', 'EPSG:3857'),
+            center: ol.proj.transform(center, 'EPSG:4326', 'EPSG:3857'),
             zoom: 4,
             minZoom: 4,
             maxZoom: 11
