@@ -302,11 +302,11 @@ var search =    function( $      ) {
                                     
                                 // do nothing if input field is empty and hide spinner
                                 if ($.trim($inputField.val()) == ''){
-                                    $inputField.removeClass("bccvl-search-spinner");
+                                    $inputField.removeClass("active");
                                     return;
                                 } 
 
-                                $inputField.addClass("bccvl-search-spinner");
+                                $inputField.addClass("active");
                                 var provider = bccvl_search.providers[$sourceField.val()];
                                 if (!provider) return;
                                 if (!provider.autocomplete) return;
@@ -333,10 +333,10 @@ var search =    function( $      ) {
                                             // otherwise assume the data is already good
                                             process(data);
                                         }
-                                        $inputField.removeClass("bccvl-search-spinner");
+                                        $inputField.removeClass("active");
                                     },
                                     error: function(xhr, status, msg){
-                                        $inputField.removeClass("bccvl-search-spinner");
+                                        $inputField.removeClass("active");
                                         if (status != 'abort'){
                                             provider.autocomplete.noResultsFound('An unexpected error has occurred with ALA. Please try again later.');
                                             process(parsedDataList);

@@ -46,6 +46,7 @@ function renderLayer(lsid){
     map.addLayer(SDMlayer);
 }
 function sdm_button_click_handler(event){
+    jQuery('#specsearch').addClass('active');
     if (SDMlayer) {
         map.removeLayer(SDMlayer)
     }  
@@ -70,11 +71,13 @@ function waitForComplete(lsid, data){
     if(data){
         if(data.status == "FAILED"){
             // If the experiment has failed, alert the user
-            alert("There was a problem, we’re looking into it. Please select another species and try again!")
+            alert("There was a problem, we’re looking into it. Please select another species and try again!");
+            jQuery('#specsearch').removeClass('active');
             // TODO: Handle this more gracefully. 
         }
         else if(data.status == "COMPLETE"){
             renderLayer(lsid);
+            jQuery('#specsearch').removeClass('active');
         }
         else{
             setTimeout(function(){
