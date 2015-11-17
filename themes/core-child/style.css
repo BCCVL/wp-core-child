@@ -32,7 +32,7 @@
 }
 
 #progress {
-  position: absolute;
+  position: relative;
   bottom: 0;
   left: 0;
   height: 2px;

@@ -11,6 +11,7 @@ Template Name: Full Width Page DemoSDM
 <!-- Canned experiment -->
 <div id="demoSDM" class="full_width_page">
 	<div id="map"></div>
+	<div id="progress"></div>
 	<div class="container_24">
 		<div id="copya" class="grid_24">
             <?php the_content(); ?> 

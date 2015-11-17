@@ -1,9 +1,6 @@
 <?php wp_head_open(); ?>
 
 <?php wp_head(); ?>
-<?php if(is_page('testpage')){
-           echo ('<script type="text/javascript" src="'. get_stylesheet_directory_uri() . '/js/demosdm.js"> </script>'); 
-        } ?>
 </head>
 
 <body id="<?php echo $post->post_name; ?>-<?php if( is_single() ) { echo 'post'; } elseif( is_category() ) { echo 'archive'; } else { echo 'page'; } ?>" itemscope itemtype="http://schema.org/WebPage">
