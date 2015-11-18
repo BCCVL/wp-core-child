@@ -9,8 +9,10 @@ function init(){
 
     if ( jQuery(window).innerWidth() < 760 ){
         center = [134, -25];
+        zoom = 3;
     } else {
         center = [112, -29];
+        zoom = 4;
     }
     console.log(center);
     // Define the base map
@@ -28,8 +30,8 @@ function init(){
         target: 'map',
         view: new ol.View({
             center: ol.proj.transform(center, 'EPSG:4326', 'EPSG:3857'),
-            zoom: 4,
-            minZoom: 4,
+            zoom: zoom,
+            minZoom: zoom,
             maxZoom: 11
         }),
         projection: 'EPSG:3857'
