@@ -316,6 +316,10 @@ h5 {
 .ol-control button:hover {
     background: rgba(0, 159, 227, 1)!important;
 }
+.ol-attribution ul {
+    color:white;
+    text-shadow:none;
+}
 @media screen and (max-width: 760px) {
     #sdmcontainer {
       width:auto;
