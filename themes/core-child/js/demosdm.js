@@ -60,49 +60,53 @@ function renderLayer(lsid){
 function sdm_button_click_handler(event){
     jQuery('#specsearch').addClass('active');
     if (SDMlayer) {
-        map.removeLayer(SDMlayer)
+        map.removeLayer(SDMlayer);
     }  
     jQuery("#species_results").hide();
     var btn = jQuery(event.currentTarget);
     event.preventDefault();
-    check_job_status(btn.attr("data-lsid"));
+    checkJobStatus(btn.attr("data-lsid"));
 }
-function check_job_status(lsid){
-    var ret = jQuery.get(ajaxurl, {action: 'swift_fetch', lsid: lsid});
+function checkJobStatus(lsid){
+    var ret = jQuery.get(ajaxurl, {action: 'check_job_status_plone', lsid: lsid});
     ret.fail(function() {
-        console.log("JSON not found");
+        console.log("Job not found");
         waitForComplete(lsid, null);
     });
     ret.done(function(data) {
-        console.log("JSON is there");
-        console.log(data);
+        console.log("Job found");
         waitForComplete(lsid, data);
     });
 }
 function waitForComplete(lsid, data){
-    if(data){
-        if(data.status == "FAILED"){
+    console.log(data)
+    // Check to see that there is data, and that there is a 'state' in that data
+    if (data && data.state) {
+        // There is a job stored in plone, check to see what state it's in
+        console.log("Data found for job")
+        if(data.state == "FAILED"){
             // If the experiment has failed, alert the user
             alert("There was a problem, we’re looking into it. Please select another species and try again!");
             jQuery('#specsearch').removeClass('active');
             // TODO: Handle this more gracefully. 
         }
-        else if(data.status == "COMPLETE"){
+        else if(data.state == "COMPLETED"){
             renderLayer(lsid);
             jQuery('#specsearch').removeClass('active');
         }
         else{
             setTimeout(function(){
-                    check_job_status(lsid);
+                    checkJobStatus(lsid);
                 }, 5000);
         }
     }
-    else{
+    else {
+        console.log("Data not found for job")
         // Assuming experiment hasn't been run in the past
         if (lastSubmittedLSID == lsid){
              console.log('Already submitted, waiting...');
              setTimeout(function(){
-                    check_job_status(lsid);
+                    checkJobStatus(lsid);
                 }, 15000);
         }
         else{
@@ -122,7 +126,7 @@ function submitDemoSDM(lsid){
                 console.log(data);
         lastSubmittedLSID = lsid;
         setTimeout(function(){
-                    check_job_status(lsid);
+                    checkJobStatus(lsid);
                 }, 10000);
     });
 }
